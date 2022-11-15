@@ -1,6 +1,7 @@
 from django.shortcuts import render , redirect
 from django.views import View
 from django.contrib import messages
+from django.db.models import Q
 
 from .models import Book
 from .forms import MemberForm
@@ -33,10 +34,12 @@ def member_create(request):
 
 
 
-def search (request):
+def search (request, **kwargs):
     if request.method == 'GET':
         query = request.GET.get('search')
-    book_result = Book.objects.filter(name__icontains = query)
-    
-    
+    book_result = Book.objects.filter(
+        Q(name__icontains=query) | Q(author__full_name=query) | Q(subject__subject=query) 
+    ) 
+        
+  
     return render (request, 'library/book_search.html' , {'book_result':book_result, 'query':query})
