@@ -57,5 +57,6 @@ class Reserved_Book(models.Model):
     reserve_date_start = models.DateField()
     reserve_date_end = models.DateField()
 
+    
     def __str__(self):
-        return self.memmber
+        return self.memmber.name + " " + self.memmber.family
