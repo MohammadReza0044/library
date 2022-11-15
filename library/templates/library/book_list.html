@@ -24,13 +24,13 @@
               </li>
               
             </ul>
-            <form class="d-flex">
+            <form class="d-flex" action="{% url 'library:search' %}">
               <input class="form-control me-2" type="search" name="search" placeholder="کتاب، نویسنده، موضوع " aria-label="Search">
               <button class="btn btn-outline-success" type="submit">جستجو</button>
             </form>
           </div>
         </div>
-      </nav>
+    </nav>
 
     <br><br>
     <h1 style="text-align: center;">لیست کل کتاب ها</h1>
